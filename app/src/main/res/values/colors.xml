@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="splashscreenbackground">#1089ff</color>
     <color name="white">#ffffff</color>
+    <color name="signup">#3f3f3f</color>
 </resources>
