@@ -28,7 +28,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/otp_back_button"
+                app:srcCompat="@mipmap/otp_back_button"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:paddingRight="5dp"/>
@@ -59,7 +59,7 @@
         android:layout_height="112dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/lin4"
-        android:src="@mipmap/docprofile"
+        app:srcCompat="@mipmap/docprofile"
         android:paddingTop="40dp"
         />
     <TextView
@@ -84,38 +84,48 @@
         android:fontFamily="@font/poppins"
         android:textSize="20sp"
         android:paddingTop="10dp"/>
-    <ImageView
-        android:id="@+id/ratingbar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/docprofession"
-        android:src="@mipmap/ratingbar1"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="10dp"/>
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingbar1"
+            android:layout_centerHorizontal="true"
+
+            android:layout_below="@id/docprofession"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            android:theme="@style/RatingBar"
+            />
+
+
 
     <ImageButton
         android:id="@+id/docpersonalinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ratingbar1"
-        android:src="@mipmap/docpersonalinfo"
+        app:srcCompat="@mipmap/docpersonalinfo"
         android:background="@color/transparent"
         android:layout_centerHorizontal="true"
-        android:paddingTop="60dp"/>
-    <ImageButton
+        android:layout_marginTop="60dp"/>
 
+
+
+    <ImageButton
+        android:id="@+id/docworkingaddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/docpersonalinfo"
-        android:src="@mipmap/docworkingaddress"
+        app:srcCompat="@mipmap/docworkingaddress"
         android:background="@color/transparent"
         android:layout_centerHorizontal="true"
         android:paddingTop="10dp"/>
+
+
     <ImageButton
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-
-    android:src="@mipmap/bookappointment"
+    android:id="@+id/bookappointment"
+    app:srcCompat="@mipmap/bookappointment"
     android:background="@color/transparent"
     android:layout_centerHorizontal="true"
     android:paddingTop="10dp"

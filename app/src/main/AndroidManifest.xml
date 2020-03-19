@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="thesevenitsolutions.com.docshub">
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,19 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".doctorprofile"
-            android:theme="@style/AppTheme2">
-
-        </activity>
-        <activity android:name=".MainActivity" />
-        <activity
-            android:name=".splashscreen"
-            android:theme="@style/AppTheme1">
-
-        </activity>
-        <activity
-            android:name=".login"
-            android:theme="@style/AppTheme1">
+        <activity android:name=".calender">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,10 +19,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".otp"
+            android:name=".doctorprofile"
+            android:theme="@style/AppTheme2" >
+
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".splashscreen"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".login"
             android:theme="@style/AppTheme1">
 
         </activity>
+        <activity
+            android:name=".otp"
+            android:theme="@style/AppTheme1" />
     </application>
 
 </manifest>

@@ -6,4 +6,12 @@
     <color name="splashscreenbackground">#1089ff</color>
     <color name="white">#ffffff</color>
     <color name="signup">#3f3f3f</color>
+    <color name="rating">#50d890</color>
+    <color name="calendar_header">@color/colorPrimary</color>
+
+    <color name="calendar_header_title">#FFF</color>
+
+    <color name="selected_date_circle_color_app">#FF5252</color>
+
+    <color name="range_bg_color_app">#FFCDD2</color>
 </resources>
