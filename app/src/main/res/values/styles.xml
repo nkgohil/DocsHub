@@ -15,7 +15,7 @@
     </style>
     <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-
+        <item name="colorAccent">@color/splashscreenbackground</item>
         <item name="colorPrimaryDark">@color/splashscreenbackground</item>
 
     </style>
@@ -23,6 +23,7 @@
         <item name="colorControlNormal">@color/grey</item>
         <item name="colorControlActivated">@color/rating</item>
     </style>
+
 
 
 </resources>
