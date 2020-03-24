@@ -9,13 +9,13 @@ import com.astritveliu.boom.Boom;
 
 
 public class login extends AppCompatActivity {
-    Button btnlogin;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        btnlogin=findViewById(R.id.btnlogin);
-        new Boom(btnlogin);
+        button=findViewById(R.id.login);
+        new Boom(button);
 
     }
 }
