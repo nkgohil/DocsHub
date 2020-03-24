@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_height="match_parent"
+    tools:context=".finddoctor">
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/splashscreenbackground">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/otp_back_button"></ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:paddingLeft="25dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="Find Doctor"
+            android:textColor="#ffffff"
+            android:textSize="21sp"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:layout_marginEnd="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text="Location"
+                android:layout_marginEnd="56dp"/>
+            <Spinner
+                android:id="@+id/spn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:gravity="center"
+                android:padding="0dp"
+                android:background="@drawable/spinner"
+                android:entries="@array/city"
+                />
+        </LinearLayout>
+    </Toolbar>
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:background="#dad9e0"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:queryHint="Search Doctordepartment"
+        android:layout_marginTop="20dp"></androidx.appcompat.widget.SearchView>
+    </LinearLayout>
+<TableLayout
+    android:id="@+id/tabledoc"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="4">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:paddingLeft="10dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/doc"
+            android:layout_weight="1"></ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:textSize="18dp"
+            android:text="Dr Raju "></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:paddingTop="10dp"
+                android:textSize="15sp"
+                android:text="Neurosergeon"></TextView>
+            <RatingBar
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:paddingTop="10dp"
+                android:layout_height="wrap_content"
+                android:scaleX=".5"
+                android:outlineAmbientShadowColor="@color/splashscreenbackground"
+                android:scaleY=".5"
+                android:visibility="visible"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp"
+                android:isIndicator="true"
+                android:max="5" />
+
+
+
+        </LinearLayout>
+    </TableRow>
+
+</TableLayout>
+
+</LinearLayout>
