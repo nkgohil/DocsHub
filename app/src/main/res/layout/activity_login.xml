@@ -8,7 +8,7 @@
     tools:context=".login"
     android:background="#ffffff">
 
-        <ImageView
+    <ImageView
             android:id="@+id/imgdocshub"
             android:paddingTop="78dp"
             android:layout_width="match_parent"

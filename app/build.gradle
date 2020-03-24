@@ -35,6 +35,9 @@ dependencies {
     implementation 'com.github.aabhasr1:OtpView:v1.1.2'
     implementation 'com.github.astrit-veliu:Boom:1.0'
     implementation 'com.github.psinetron:slycalendarview:0.0.9'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
 
 
 }

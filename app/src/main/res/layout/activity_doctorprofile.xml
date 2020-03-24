@@ -14,35 +14,25 @@
         android:orientation="horizontal"
         android:id="@+id/lin4">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/splashscreenbackground"
-        >
-        <LinearLayout
+        <Toolbar
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/splashscreenbackground">
+
             <ImageView
+                android:id="@+id/docprofile_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/otp_back_button" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/otp_back_button"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:paddingRight="5dp"/>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:paddingStart="35dp"
                 android:text="Doctor Profile"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:fontFamily="@font/poppins"
-                android:textSize="20sp"
-                android:layout_weight="7"/>
-
-
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </Toolbar>
     </LinearLayout>
 
     <ImageView
@@ -52,7 +42,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/lin4"
         app:srcCompat="@drawable/doctor"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         />
     <TextView
         android:id="@+id/docname"
