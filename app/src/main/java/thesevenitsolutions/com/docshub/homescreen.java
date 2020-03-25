@@ -1,15 +1,19 @@
 package thesevenitsolutions.com.docshub;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-public class homescreen extends AppCompatActivity {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+public class homescreen extends AppCompatActivity {
+    BottomNavigationView bottomNavigation;
     Context ctx=this;
     ImageView imghos,imgdoc,imgdepartment,imgappoint;
     apiInterface apiInterface;
@@ -52,6 +56,23 @@ public class homescreen extends AppCompatActivity {
                 startActivity(departmentintent);
             }
         });
+        BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.tabhome:
+                                startActivity(new Intent(ctx,homescreen.class));
+                                return true;
+                            case R.id.tabsearch:
+                                startActivity(new Intent(ctx,finddoctor.class));
+                                return true;
+                            case R.id.tabappointment:
+                                startActivity(new Intent(ctx,department.class));
+                            return true;
+                        }
+                        return false;
+                    }
+                };
     }
 
     private void allocatememory() {
@@ -59,6 +80,7 @@ public class homescreen extends AppCompatActivity {
         imgdoc= findViewById(R.id.imgfinddoc);
         imgdepartment= findViewById(R.id.imgdepartment);
         imgappoint= findViewById(R.id.imgappoint);
+        bottomNavigation = findViewById(R.id.bottom_navigation);
 
     }
 

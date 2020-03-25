@@ -32,7 +32,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 apiInterface apiService = apIclient.getClient().create(apiInterface.class);
-                Intent loginintent=new Intent(ctx,otp.class);
+                Intent loginintent=new Intent(ctx,homescreen.class);
                 startActivity(loginintent);
                 finish();
             }
