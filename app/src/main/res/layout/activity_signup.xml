@@ -33,6 +33,7 @@
 
         <EditText
             android:id="@+id/txtname"
+            android:inputType="text"
             android:fontFamily="@font/poppinsmedium"
             android:paddingVertical="10dp"
             android:layout_marginVertical="7dp"
@@ -57,6 +58,7 @@
 
         <EditText
             android:id="@+id/txtusername"
+            android:inputType="text"
             android:fontFamily="@font/poppinsmedium"
             android:paddingVertical="10dp"
             android:layout_marginVertical="7dp"
@@ -85,6 +87,7 @@
             android:id="@+id/txtmobileno"
             android:fontFamily="@font/poppinsmedium"
             android:alpha=".7"
+            android:inputType="phone"
             android:paddingVertical="10dp"
             android:paddingHorizontal="10dp"
             android:textColorHint="#3f3f3f"
@@ -108,6 +111,7 @@
             android:id="@+id/txtemail"
             android:fontFamily="@font/poppinsmedium"
             android:alpha=".7"
+            android:inputType="textEmailAddress"
             android:paddingVertical="10dp"
             android:paddingHorizontal="10dp"
             android:textColorHint="#3f3f3f"

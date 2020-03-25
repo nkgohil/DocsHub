@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fillViewport="true"
     android:layout_height="match_parent"
     tools:context=".doctorprofile">
 <LinearLayout
@@ -93,7 +94,7 @@
 
     <ImageButton
         android:id="@+id/docpersonalinfo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/docpersonalinfo"
         android:background="@color/transparent"
@@ -104,7 +105,7 @@
 
     <ImageButton
         android:id="@+id/docworkingaddress"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/docworkingaddress"
         android:background="@color/transparent"
@@ -123,17 +124,13 @@
         android:id="@+id/bookappointment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         android:fontFamily="@font/poppinsmedium"
+        android:layout_gravity="bottom"
         android:text="BOOk appointment"
         android:layout_marginHorizontal="25dp"
         android:textColor="@color/white"
         android:textSize="18sp" />
 </LinearLayout>
 </LinearLayout>
-
-
-
-
 </ScrollView>

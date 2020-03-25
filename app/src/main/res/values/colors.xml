@@ -14,4 +14,5 @@
     <color name="selected_date_circle_color_app">#FF5252</color>
 
     <color name="range_bg_color_app">#FFCDD2</color>
+    <color name="grey">#B9B5B4</color>
 </resources>
