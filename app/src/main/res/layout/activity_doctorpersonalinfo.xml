@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".doctorpersonalinfo">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Toolbar
+        app:layout_scrollFlags="scroll|enterAlways"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/splashscreenbackground">
@@ -50,6 +54,17 @@
         android:text="Surgeon"
         android:textAlignment="center"
         android:textSize="16sp"/>
+    <RatingBar
+        android:id="@+id/ratingbar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isIndicator="true"
+        android:max="5"
+        android:paddingTop="10dp"
+        android:scaleX=".5"
+        android:scaleY=".5"
+        android:visibility="visible" />
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_marginTop="18dp"
@@ -142,5 +157,5 @@
                 android:paddingLeft="5dp"/>
         </TableRow>
     </TableLayout>
-
 </LinearLayout>
+</ScrollView>

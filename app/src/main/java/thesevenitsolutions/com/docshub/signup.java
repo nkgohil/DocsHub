@@ -13,19 +13,22 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 public class signup extends AppCompatActivity {
-    EditText txtname,txtemail,txtmobile,txtpassword,txtconfirmpassword,txtusername;
+
+    EditText txtname,txtemail,txtmobile,txtpassword,txtusername;
     Button btnsignup;
     TextView txtsignin;
     Context ctx=this;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,38 +36,89 @@ public class signup extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         allocatememory();
         setevent();
-        validate();
     }
 
-    private void validate() {
-        //String email=
-    }
 
     private void setevent() {
+        txtmobile.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (txtmobile.length() == 3 || txtmobile.length() == 7) {
+                    txtmobile.append("-");
+                }
+            }
+        });
         txtsignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent logintent=new Intent(ctx,login.class);
+                startActivity(logintent);
             }
         });
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signup_user();
+                if(ValidateInput())
+                    signup_user();
+            }
+        });
+        ScrollView scrollView;
+       scrollView=findViewById(R.id.scroll);
+        scrollView.post(new Runnable()
+        {
+            public void run() {
+                scrollView.fullScroll(ScrollView.FOCUS_UP);
             }
         });
     }
-
+    private boolean ValidateInput() {
+        String Email = txtemail.getText().toString().trim();
+        String Password = txtpassword.getText().toString().trim();
+        String valemail = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String Mobileno=txtmobile.getText().toString().trim();
+        boolean isValid = true;
+        if(txtname.length()==0) {
+            txtname.setError("Please Fill Up Name");
+            isValid = false;
+        }
+        else if (txtusername.length()==0) {
+            txtusername.setError("Please Fill Up Username");
+            isValid = false;
+        }
+        else if(Mobileno.length()==0) {
+            txtmobile.setError("Please fill Up Phone Number");
+            isValid = false;
+        }
+        else if(Mobileno.length()!=10) {
+            txtmobile.setError("Please Add Only 10 Digit");
+            isValid = false;
+        }
+        if(Email.length()==0)
+        {
+            txtemail.setError("email is required");
+            isValid = false;
+        }
+        else if (!Email.matches(valemail))
+        {
+            txtemail.setError("Please enter Correct Email Address");
+            isValid = false;
+        }
+        else if(Password.length()<8)
+        {
+            txtpassword.setError("Password is required and must be at least 8 character long");
+            isValid = false;
+        }
+        return isValid;
+    }
     private void signup_user() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Signing Up...");
+        progressDialog.setMessage("Please Wait...");
         progressDialog.show();
 
         String name = txtname.getText().toString().trim();
         String email = txtemail.getText().toString().trim();
         String mobile = txtmobile.getText().toString().trim();
         String password = txtpassword.getText().toString().trim();
-        String confirm_password = txtconfirmpassword.getText().toString().trim();
         String username =txtusername.getText().toString().trim();
 
 
@@ -74,26 +128,31 @@ public class signup extends AppCompatActivity {
                 .build();
         apiInterface service = retrofit.create(apiInterface.class);
         Integer regid=10;
-        user user = new user(name,password,regid,mobile,email,username,confirm_password);
+        user user = new user(name,username,email,mobile,password);
         Call<user_signup> call = service.createUser(
-               user.getName(),
-                user.getPassword(),
-                user.getRegid(),
-                user.getMobile(),
-                user.getEmail(),
+                user.getName(),
                 user.getUsername(),
-                user.getConfirm_password());
+                user.getEmail(),
+                user.getMobile(),
+                user.getPassword());
         call.enqueue(new Callback<user_signup>() {
             @Override
             public void onResponse(Call<user_signup> call, Response<user_signup> response) {
                 progressDialog.dismiss();
-                Toast.makeText(signup.this,response.body().toString(), Toast.LENGTH_SHORT).show();
-                if(response.body().status==true){
+                assert response.body() != null;
+                Toast.makeText(signup.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                if(response.body().getData().getToken()!=null){
+                    prefrence.getInstance(ctx).userLogin(response.body().getData());
                     Intent homeintent=new Intent(ctx,homescreen.class);
                     startActivity(homeintent);
+                    Toast.makeText(ctx,response.body().getData().getUsername(),Toast.LENGTH_LONG).show();
+                    Log.d("signup",response.body().getData().toString());
+                    Log.d("signup",response.body().getData().getToken());
+
                 }
                 else{
-                    Toast.makeText(ctx,"Something went Wrong",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ctx, (CharSequence) response.body().getError(),Toast.LENGTH_LONG).show();
+                    Log.d("signup",response.body().getError().toString());
                 }
 
             }
@@ -112,7 +171,6 @@ public class signup extends AppCompatActivity {
         txtemail=findViewById(R.id.txtemail);
         txtmobile=findViewById(R.id.txtmobileno);
         txtpassword=findViewById(R.id.txtpassword);
-        txtconfirmpassword=findViewById(R.id.txtconfirmpassword);
         btnsignup=findViewById(R.id.btnsignup);
         txtusername=findViewById(R.id.txtusername);
         txtsignin=findViewById(R.id.txtsignin);

@@ -13,8 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:fontFamily="@font/poppins"
         android:layout_gravity="bottom|center_horizontal">
     </TextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/editprofile"
+        android:layout_gravity="bottom|right"/>
 </FrameLayout>

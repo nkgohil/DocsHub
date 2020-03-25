@@ -1,43 +1,32 @@
 package thesevenitsolutions.com.docshub.pojo;
 
 public class user {
-    private String name, email,mobile, username,token,password,confirm_password;
-private Integer regid=10;
-    public user(String name, String s, Integer regid, String mobile, String password, String email, String username) {
-        this.email = email;
-        this.username = username;
-    }
+private String name,username,password,email,mobile,token;
 
-    public user(String name, String email, String mobile, String username, String password, String confirm_password, Integer regid) {
+    public user(String name, String username, String email, String mobile, String password) {
         this.name = name;
+        this.username = username;
+        this.password = password;
         this.email = email;
         this.mobile = mobile;
-        this.username = username;
-        this.password = password;
-        this.confirm_password = confirm_password;
-        this.regid = regid;
     }
 
-    public user(String email, String token, String password) {
+    public user(String username, String email, String token) {
+        this.username = username;
         this.email = email;
         this.token = token;
-        this.password = password;
     }
+    public user(String username,String email){
+        this.username= username;
+        this.email= email;
 
+    }
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getUsername() {
@@ -48,14 +37,6 @@ private Integer regid=10;
         this.username = username;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -64,24 +45,24 @@ private Integer regid=10;
         this.password = password;
     }
 
-    public String getConfirm_password() {
-        return confirm_password;
+    public String getEmail() {
+        return email;
     }
 
-    public void setConfirm_password(String confirm_password) {
-        this.confirm_password = confirm_password;
-    }
-
-    public Integer getRegid() {
-        return regid;
-    }
-
-    public void setRegid(Integer regid) {
-        this.regid = regid;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getMobile() {
         return mobile;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public void setMobile(String mobile) {

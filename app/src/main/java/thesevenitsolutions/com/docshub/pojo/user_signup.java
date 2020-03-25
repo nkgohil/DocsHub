@@ -9,14 +9,25 @@ public class user_signup {
     public Integer code;
     @SerializedName("message")
     public String message;
-@SerializedName("data")
-public user data;
+    @SerializedName("data")
+    public user data;
+    @SerializedName("error")
+    public user error;
 
-    public user_signup(boolean status, Integer code, String message, user data) {
+    public user_signup(boolean status, Integer code, String message, user data,user error) {
         this.status = status;
         this.code = code;
         this.message = message;
         this.data = data;
+        this.error=error;
+    }
+
+    public user getError() {
+        return error;
+    }
+
+    public void setError(user user) {
+        this.error = error;
     }
 
     public boolean isStatus() {

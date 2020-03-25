@@ -14,20 +14,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@mipmap/otp_back_button"></ImageView>
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/otp_back_button" />
+
             <TextView
                 android:layout_width="match_parent"
-                android:paddingLeft="25dp"
-                android:layout_weight="3"
                 android:layout_height="wrap_content"
-                android:text="Find Hospital"
+                android:layout_weight="3"
+                android:paddingStart="20dp"
+                android:text="@string/find_hospital"
                 android:textColor="#ffffff"
-                android:textSize="16sp"></TextView>
+                android:layout_gravity="center_vertical"
+                android:textSize="20sp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,32 +40,33 @@
             android:gravity="end"
             android:layout_marginEnd="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:text="Location"
-                android:layout_marginEnd="56dp"/>
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:gravity="center"
                 android:background="@drawable/spinner"
-                android:padding="0dp"
                 android:entries="@array/city"
-                />
+                android:gravity="center_vertical"
+                android:textDirection="inherit"
+                android:padding="0dp"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
     </Toolbar>
-
-    <LinearLayout android:orientation="vertical"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@mipmap/search"></EditText>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#dad9e0"
+        >
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#ffffff"
+            android:queryHint="Search Doctordepartment" />
     </LinearLayout>
     <TableLayout
         android:layout_marginTop="20dp"
@@ -73,48 +78,52 @@
             android:layout_height="wrap_content"
             android:weightSum="4"
             >
+
             <ImageView
                 android:id="@+id/imghospital"
                 android:layout_width="match_parent"
                 android:paddingLeft="10dp"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/hospital"
-                android:layout_weight="1"></ImageView>
+                android:layout_weight="1" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/txthospitalname"
                     android:layout_width="match_parent"
                     android:paddingTop="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:textSize="18dp"
-                    android:text="sadvichar Hospital"></TextView>
+                    android:textSize="20sp"
+                    android:text="sadvichar Hospital" />
+
                 <TextView
                     android:id="@+id/txthospitaltype"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:paddingTop="10dp"
-                    android:textSize="15sp"
-                    android:text="General"></TextView>
+                    android:textSize="18sp"
+                    android:text="General" />
+
                 <RatingBar
                     android:id="@+id/rating2"
                     android:layout_width="wrap_content"
-                    android:paddingTop="10dp"
                     android:layout_height="wrap_content"
-                    android:scaleX=".5"
+                    android:isIndicator="true"
+                    android:max="5"
                     android:outlineAmbientShadowColor="@color/splashscreenbackground"
+                    android:paddingTop="10dp"
+                    android:scaleX=".5"
                     android:scaleY=".5"
-                    android:visibility="visible"
                     android:transformPivotX="0dp"
                     android:transformPivotY="0dp"
-                    android:isIndicator="true"
-                    android:max="5" />
+                    android:visibility="visible" />
 
             </LinearLayout>
         </TableRow>

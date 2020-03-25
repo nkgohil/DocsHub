@@ -36,75 +36,11 @@ public class findhospital extends AppCompatActivity{
         setContentView(R.layout.activity_findhospital);
         allocatememory();
         setevent();
-        fetchJSON();
 
 
-    }
-
-    private void fetchJSON() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(SpinnerInterface.JSONURL)
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .build();
-
-        SpinnerInterface api = retrofit.create(SpinnerInterface.class);
-
-        Call<String> call = api.getJSONString();
-
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-               boolean a=false;
-                if(a==true){
-                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
-                if (response.isSuccessful()) {
-                    if (response.body() != null) {
-                        Log.i("onSuccess", response.body().toString());
-
-                        String jsonresponse = response.body().toString();
-                        spinJSON(jsonresponse);
-
-                    } else {
-                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
-                    }
-                }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-            }
-        });
-    }
-
-    private void spinJSON(String response){
-
-        try {
-
-            JSONObject obj = new JSONObject(response);
-            if(obj.optString("status").equals("true")){
-
-                goodModelArrayList = new ArrayList<>();
-                JSONArray dataArray  = obj.getJSONArray("city");
-
-                for (int i = 0; i < dataArray.length(); i++) {
-
-                    spinner spinnerModel = new spinner();
-                    JSONObject dataobj = dataArray.getJSONObject(i);
-
-                    spinnerModel.setCity(dataobj.getString("city"));
-
-                    goodModelArrayList.add(spinnerModel);
-                }
-
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
+
 
     private void setevent(){
         SearchView.OnQueryTextListener querytext =new SearchView.OnQueryTextListener() {
