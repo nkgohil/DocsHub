@@ -8,7 +8,7 @@
     tools:context=".login"
     android:background="#ffffff">
 
-    <ImageView
+        <ImageView
             android:id="@+id/imgdocshub"
             android:paddingTop="78dp"
             android:layout_width="match_parent"
@@ -35,7 +35,6 @@
                     android:textSize="20sp"/>
 
                     <EditText
-                        android:id="@+id/username"
                         android:fontFamily="@font/poppinsmedium"
                         android:paddingVertical="10dp"
                         android:layout_marginVertical="10dp"
@@ -57,7 +56,6 @@
                             android:textColor="#000000"
                             android:textSize="20sp"/>
                         <EditText
-                            android:id="@+id/password"
                             android:fontFamily="@font/poppinsmedium"
                             android:alpha=".7"
                             android:paddingVertical="10dp"
@@ -84,7 +82,7 @@
 
                     <Button
 
-                        android:id="@+id/btnlogin"
+                        android:id="@+id/login"
                         style="@style/ShapeAppearanceOverlay.MaterialComponents.TextInputLayout.FilledBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

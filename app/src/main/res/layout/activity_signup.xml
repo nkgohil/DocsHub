@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView   xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login"
-    android:background="#ffffff">
-        <LinearLayout
+    android:background="#ffffff"
+    tools:context=".login">
+    <LinearLayout
         android:id="@+id/frm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="center_vertical"
-        android:layout_marginHorizontal="40dp">
-            <ImageView
-                android:id="@+id/imgdocshub"
-                android:layout_width="match_parent"
-                android:layout_gravity="top"
-                android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/docshublogo"
-                android:paddingVertical="25dp"/>
+        android:layout_marginHorizontal="25dp">
+        <ImageView
+            android:id="@+id/imgdocshub"
+            android:layout_width="match_parent"
+            android:layout_gravity="top"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/docshublogo"
+            android:paddingVertical="30dp"/>
 
 
-            <TextView
+        <TextView
             android:fontFamily="@font/poppinsmedium"
             android:layout_marginVertical="7dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="NAME"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -34,6 +33,7 @@
 
         <EditText
             android:id="@+id/txtname"
+            android:inputType="text"
             android:fontFamily="@font/poppinsmedium"
             android:paddingVertical="10dp"
             android:layout_marginVertical="7dp"
@@ -45,46 +45,49 @@
             android:textColorHint="#3f3f3f"
             android:alpha=".7"
             android:background="@drawable/edittext"/>
-            <TextView
-                android:fontFamily="@font/poppinsmedium"
-                android:layout_marginVertical="7dp"
-                android:id="@+id/txtmobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="USER NAME"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="20sp"/>
-
-            <EditText
-                android:id="@+id/txtusername"
-                android:fontFamily="@font/poppinsmedium"
-                android:paddingVertical="10dp"
-                android:layout_marginVertical="7dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name"
-                android:paddingHorizontal="10dp"
-                android:textColor="#000000"
-                android:textColorHint="#3f3f3f"
-                android:alpha=".7"
-                android:background="@drawable/edittext"/>
-
-
         <TextView
             android:fontFamily="@font/poppinsmedium"
             android:layout_marginVertical="7dp"
+            android:id="@+id/txtmobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PHONE NUMBER"
+            android:text="USER NAME"
             android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/txtusername"
+            android:inputType="text"
+            android:fontFamily="@font/poppinsmedium"
+            android:paddingVertical="10dp"
+            android:layout_marginVertical="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:paddingHorizontal="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#3f3f3f"
+            android:alpha=".7"
+            android:background="@drawable/edittext"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="7dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="PHONE NUMBER"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <EditText
 
             android:id="@+id/txtmobileno"
             android:fontFamily="@font/poppinsmedium"
             android:alpha=".7"
+            android:inputType="phone"
             android:paddingVertical="10dp"
             android:paddingHorizontal="10dp"
             android:textColorHint="#3f3f3f"
@@ -108,6 +111,7 @@
             android:id="@+id/txtemail"
             android:fontFamily="@font/poppinsmedium"
             android:alpha=".7"
+            android:inputType="textEmailAddress"
             android:paddingVertical="10dp"
             android:paddingHorizontal="10dp"
             android:textColorHint="#3f3f3f"
@@ -142,30 +146,6 @@
             android:inputType="textPassword"
             android:paddingTop="9dp"
             android:background="@drawable/edittext"/>
-            <TextView
-                android:fontFamily="@font/poppinsmedium"
-                android:layout_marginVertical="7dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="CONFIRM PASSWORD"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:textSize="20sp"/>
-            <EditText
-                android:id="@+id/txtconfirmpassword"
-                android:fontFamily="@font/poppinsmedium"
-                android:alpha=".7"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="10dp"
-                android:layout_marginVertical="7dp"
-                android:textColorHint="#3f3f3f"
-                android:textColor="#000000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:paddingTop="9dp"
-                android:background="@drawable/edittext"/>
         <Button
             android:id="@+id/btnsignup"
             style="@style/ShapeAppearanceOverlay.MaterialComponents.TextInputLayout.FilledBox"
@@ -189,18 +169,17 @@
                 android:text="Already have an account? "
                 android:textColor="#000000"
                 android:alpha=".5"
-
                 android:layout_marginTop="2dp"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
+
             <TextView
-                android:textSize="20sp"
                 android:id="@+id/txtsignin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="SignIn"
                 android:textColor="#000000"
-                android:layout_marginTop="2dp"
-                />
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 

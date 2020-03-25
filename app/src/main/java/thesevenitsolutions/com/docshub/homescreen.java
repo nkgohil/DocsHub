@@ -1,18 +1,28 @@
 package thesevenitsolutions.com.docshub;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-public class homescreen extends AppCompatActivity {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
+public class homescreen extends AppCompatActivity {
+    BottomNavigationView bottomNavigation;
     Context ctx=this;
     ImageView imghos,imgdoc,imgdepartment,imgappoint;
-    apiInterface apiInterface;
+    DrawerLayout d1;
+    ActionBarDrawerToggle abdt;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +30,7 @@ public class homescreen extends AppCompatActivity {
         setContentView(R.layout.activity_homescreen);
         allocatememory();
         setevent();
+
 
     }
 
@@ -52,6 +63,23 @@ public class homescreen extends AppCompatActivity {
                 startActivity(departmentintent);
             }
         });
+        BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.tabhome:
+                                startActivity(new Intent(ctx,homescreen.class));
+                                return true;
+                            case R.id.tabsearch:
+                                startActivity(new Intent(ctx,finddoctor.class));
+                                return true;
+                            case R.id.tabappointment:
+                                startActivity(new Intent(ctx,department.class));
+                            return true;
+                        }
+                        return false;
+                    }
+                };
     }
 
     private void allocatememory() {
@@ -59,7 +87,6 @@ public class homescreen extends AppCompatActivity {
         imgdoc= findViewById(R.id.imgfinddoc);
         imgdepartment= findViewById(R.id.imgdepartment);
         imgappoint= findViewById(R.id.imgappoint);
-
     }
 
 }

@@ -5,6 +5,7 @@ import thesevenitsolutions.com.docshub.pojo.*;
 public class prefrence {
 
 
+
     private static prefrence preferences;
     private SharedPreferences.Editor writer;
 
@@ -15,7 +16,7 @@ public class prefrence {
     private static final String KEY_USER_NAME = "keyusername";
     private static final String KEY_USER_EMAIL = "keyuseremail";
     private static final String KEY_USER_MOBILE ="keyusermobilenumber" ;
-
+    private static final String KEY_USER_TOKEN ="keyusertoken" ;
 
     private prefrence(Context context) {
         ctx = context;
@@ -31,19 +32,16 @@ public class prefrence {
     public boolean userLogin(user user) {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        //editor.putString(KEY_USER_NAME, user.getName());
         editor.putString(KEY_USER_USERNAME, user.getName());
         editor.putString(KEY_USER_EMAIL, user.getEmail());
-       // editor.putString(KEY_USER_MOBILE, user.getMobile());
+        editor.putString(KEY_USER_TOKEN,user.getToken());
         editor.apply();
         return true;
     }
 
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        if (sharedPreferences.getString(KEY_USER_EMAIL, null) != null)
-            return true;
-        return false;
+        return sharedPreferences.getString(KEY_USER_TOKEN, null) != null;
     }
 
     public user getUser() {
@@ -53,6 +51,7 @@ public class prefrence {
                 sharedPreferences.getString(KEY_USER_EMAIL, null),
                 sharedPreferences.getString(KEY_USER_MOBILE, null)
         );
+
     }
 
     public boolean logout() {

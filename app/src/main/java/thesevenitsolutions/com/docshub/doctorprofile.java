@@ -29,7 +29,7 @@ import java.util.Locale;
 
 public class doctorprofile extends AppCompatActivity implements SlyCalendarDialog.Callback {
     ImageButton bookappointment;
-    ImageView docpersonalinfo,docworkingaddress,docprofile_back;
+    ImageView docpersonalinfo,docworkingaddress;
     RatingBar ratingBar;
     Context ctx=this;
     TextView textview;
@@ -37,7 +37,6 @@ public class doctorprofile extends AppCompatActivity implements SlyCalendarDialo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         setContentView(R.layout.activity_doctorprofile);
         allocatememory();
         setevent();
@@ -52,8 +51,6 @@ public class doctorprofile extends AppCompatActivity implements SlyCalendarDialo
             public void onClick(View v) {
                 Intent intent=new Intent(ctx,doctorpersonalinfo.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-
 
             }
         });
@@ -81,9 +78,7 @@ public class doctorprofile extends AppCompatActivity implements SlyCalendarDialo
 
     private void allocatememory() {
         bookappointment=findViewById(R.id.bookappointment);
-        docprofile_back=findViewById(R.id.docprofile_back);
         new Boom(bookappointment);
-        new Boom(docprofile_back);
         docpersonalinfo=findViewById(R.id.docpersonalinfo);
         new Boom(docpersonalinfo);
         docworkingaddress=findViewById(R.id.docworkingaddress);

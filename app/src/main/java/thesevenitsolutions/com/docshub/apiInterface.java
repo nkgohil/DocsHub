@@ -12,11 +12,9 @@ public interface apiInterface {
         @FormUrlEncoded
         @POST("public/api/register")
         Call<user_signup> createUser(@Field("name")String name,
-                                           @Field("password")String password,
-                                           @Field("regid")Integer regid,
-                                           @Field("mobile")String mobile,
-                                           @Field("email")String email,
-                                           @Field("username")String username,
-                                           @Field("confirm_password")String confirm_password);
+                                     @Field("username")String username,
+                                     @Field("password")String password,
+                                     @Field("mobile")String mobile,
+                                     @Field("email")String email);
     }
 
