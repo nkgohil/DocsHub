@@ -33,7 +33,7 @@
         <activity
             android:name=".findhospital"
             android:theme="@style/AppTheme3" />
-        <activity android:name=".MainActivity" />
+
         <activity
             android:name=".splashscreen"
             android:theme="@style/AppTheme1">

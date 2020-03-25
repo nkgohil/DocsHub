@@ -62,14 +62,7 @@ public class signup extends AppCompatActivity {
                     signup_user();
             }
         });
-        ScrollView scrollView;
-       scrollView=findViewById(R.id.scroll);
-        scrollView.post(new Runnable()
-        {
-            public void run() {
-                scrollView.fullScroll(ScrollView.FOCUS_UP);
-            }
-        });
+
     }
     private boolean ValidateInput() {
         String Email = txtemail.getText().toString().trim();
