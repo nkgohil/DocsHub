@@ -28,7 +28,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class doctorprofile extends AppCompatActivity implements SlyCalendarDialog.Callback {
-    Button bookappointment;
+    ImageButton bookappointment;
     ImageView docpersonalinfo,docworkingaddress;
     RatingBar ratingBar;
     Context ctx=this;

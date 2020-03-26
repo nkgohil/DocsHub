@@ -49,6 +49,10 @@ public class login extends AppCompatActivity {
 
                 }
 
+                apiInterface apiService = apIclient.getClient().create(apiInterface.class);
+                Intent loginintent=new Intent(ctx,otp.class);
+                startActivity(loginintent);
+                finish();
             }
         });
         txtsignup.setOnClickListener(new View.OnClickListener() {
