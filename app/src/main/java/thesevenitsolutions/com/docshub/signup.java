@@ -9,9 +9,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import thesevenitsolutions.com.docshub.pojo.user;
 import thesevenitsolutions.com.docshub.pojo.user_signup;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,11 +27,12 @@ import android.widget.Toast;
 
 public class signup extends AppCompatActivity {
 
+    private static final int PERMISSION_REQUEST_CODE = 100;
     EditText txtname,txtemail,txtmobile,txtpassword,txtusername;
     Button btnsignup;
     TextView txtsignin;
     Context ctx=this;
-
+    TextView userchange;
 
 
     @Override
@@ -36,7 +41,20 @@ public class signup extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         allocatememory();
         setevent();
+        checkpermission();
     }
+
+    private void checkpermission() {
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if(checkSelfPermission(Manifest.permission.INTERNET)!= PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED) {
+                String[] PermissionList = {Manifest.permission.INTERNET,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(PermissionList,PERMISSION_REQUEST_CODE);
+            }
+
+        }
+        }
+
 
 
     private void setevent() {
@@ -127,7 +145,6 @@ public class signup extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiInterface service = retrofit.create(apiInterface.class);
-        Integer regid=10;
         user user = new user(name,username,email,mobile,password);
         Call<user_signup> call = service.createUser(
                 user.getName(),
@@ -136,22 +153,22 @@ public class signup extends AppCompatActivity {
                 user.getMobile(),
                 user.getPassword());
         call.enqueue(new Callback<user_signup>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(Call<user_signup> call, Response<user_signup> response) {
                 progressDialog.dismiss();
                 assert response.body() != null;
-                Toast.makeText(signup.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                if(response.body().getData().getToken()!=null){
+                if(response.body().isStatus()){
                     prefrence.getInstance(ctx).userLogin(response.body().getData());
                     Intent homeintent=new Intent(ctx,homescreen.class);
                     startActivity(homeintent);
-                    Toast.makeText(ctx,response.body().getData().getUsername(),Toast.LENGTH_LONG).show();
+                    finish();
+                    Toast.makeText(signup.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Log.d("signup",response.body().getData().toString());
                     Log.d("signup",response.body().getData().getToken());
-
-                }
+                 }
                 else{
-                    Toast.makeText(ctx, (CharSequence) response.body().getError(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(ctx,response.body().getMessage(),Toast.LENGTH_LONG).show();
                     Log.d("signup",response.body().getError().toString());
                 }
 
@@ -174,5 +191,6 @@ public class signup extends AppCompatActivity {
         btnsignup=findViewById(R.id.btnsignup);
         txtusername=findViewById(R.id.txtusername);
         txtsignin=findViewById(R.id.txtsignin);
+        userchange=findViewById(R.id.txtuserchange);
     }
 }
