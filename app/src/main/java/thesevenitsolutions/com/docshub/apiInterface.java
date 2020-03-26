@@ -10,11 +10,16 @@ import retrofit2.http.POST;
 
 public interface apiInterface {
         @FormUrlEncoded
-        @POST("public/api/register")
+        @POST("register")
         Call<user_signup> createUser(@Field("name")String name,
                                      @Field("username")String username,
                                      @Field("password")String password,
                                      @Field("mobile")String mobile,
                                      @Field("email")String email);
+
+        @FormUrlEncoded
+        @POST("login")
+        Call<user_signup> loginUser(@Field("userid") String username,
+                                    @Field("password") String password);
     }
 
