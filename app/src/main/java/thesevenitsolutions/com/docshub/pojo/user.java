@@ -3,10 +3,6 @@ package thesevenitsolutions.com.docshub.pojo;
 public class user {
 private String name,username,password,email,mobile,token;
 
-    public user(String password, String email) {
-        this.password = password;
-        this.email = email;
-    }
 
     public user(String name, String username, String email, String mobile, String password) {
         this.name = name;
@@ -16,17 +12,12 @@ private String name,username,password,email,mobile,token;
         this.mobile = mobile;
     }
 
-    public user(String name, String email, String mobile, String token) {
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
-        this.token = token;
-    }
 
-    public user(String username, String email, String token) {
-        this.username = username;
-        this.email = email;
-        this.token = token;
+    public user(String name, String email, String mobile, String token) {
+            this.name=name;
+            this.email=email;
+            this.mobile=mobile;
+            this.token=token;
     }
 
     public String getName() {
