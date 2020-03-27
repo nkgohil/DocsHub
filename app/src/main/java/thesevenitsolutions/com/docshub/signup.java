@@ -25,6 +25,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.astritveliu.boom.Boom;
+
 public class signup extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 100;
@@ -132,12 +134,7 @@ public class signup extends AppCompatActivity {
         String password = txtpassword.getText().toString().trim();
         String username =txtusername.getText().toString().trim();
 
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(common.getbaseurl())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        apiInterface service = retrofit.create(apiInterface.class);
+        apiInterface service = apIclient.getClient().create(apiInterface.class);
         user user = new user(name,username,email,mobile,password);
         Call<user_signup> call = service.createUser(
                 user.getName(),
@@ -146,13 +143,12 @@ public class signup extends AppCompatActivity {
                 user.getMobile(),
                 user.getPassword());
         call.enqueue(new Callback<user_signup>() {
-            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(Call<user_signup> call, Response<user_signup> response) {
                 progressDialog.dismiss();
                 assert response.body() != null;
                 if(response.body().isStatus()){
-                    prefrence.getInstance(ctx).userLogin(response.body().getData());
+                    prefrence.getInstance(ctx).getUser(response.body ().getData());
                     Intent homeintent=new Intent(ctx,homescreen.class);
                     startActivity(homeintent);
                     finish();
@@ -182,6 +178,7 @@ public class signup extends AppCompatActivity {
         txtmobile=findViewById(R.id.txtmobileno);
         txtpassword=findViewById(R.id.txtpassword);
         btnsignup=findViewById(R.id.btnsignup);
+        new Boom(btnsignup);
         txtusername=findViewById(R.id.txtusername);
         txtsignin=findViewById(R.id.txtsignin);
         userchange=findViewById(R.id.txtuserchange);

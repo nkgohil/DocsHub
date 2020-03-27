@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import thesevenitsolutions.com.docshub.pojo.user;
-import thesevenitsolutions.com.docshub.pojo.user_signup;
+
+import thesevenitsolutions.com.docshub.pojo.user2;
+import thesevenitsolutions.com.docshub.pojo.user_signin;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -22,11 +21,12 @@ import android.widget.Toast;
 
 import com.astritveliu.boom.Boom;
 
+import java.io.IOException;
+
 
 public class login extends AppCompatActivity {
     Button button;
     Context ctx=this;
-    String name;
     TextView txtsignup;
     EditText usernamelog,passwordlog;
     TextView usernamechange;
@@ -48,11 +48,6 @@ public class login extends AppCompatActivity {
                     loginuser();
 
                 }
-
-                apiInterface apiService = apIclient.getClient().create(apiInterface.class);
-                Intent loginintent=new Intent(ctx,otp.class);
-                startActivity(loginintent);
-                finish();
             }
         });
         txtsignup.setOnClickListener(new View.OnClickListener() {
@@ -68,45 +63,49 @@ public class login extends AppCompatActivity {
     private void loginuser() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("ONE MOMENT PLEASE");
-        progressDialog.setProgressStyle(100);
         progressDialog.show();
 
-        String username=usernamelog.toString().trim();
+        String userName=usernamelog.toString().trim();
         String password=passwordlog.toString().trim();
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(common.getbaseurl())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        apiInterface service = retrofit.create(apiInterface.class);
-        user user= new user(username,password);
+        apiInterface service = apIclient.getClient().create(apiInterface.class);
 
-        Call<user_signup>call= service.loginUser(user.getUsername(),user.getPassword());
-        call.enqueue(new Callback<user_signup>() {
+        user2 user2= new user2(userName,password);
 
+        Call<user_signin>call = service.loginUser(user2.getUserName(),user2.getPassword());
+
+        call.enqueue(new Callback<user_signin>() {
             @Override
-            public void onResponse(Call<user_signup> call, Response<user_signup> response) {
+            public void onResponse(Call<user_signin> call, Response<user_signin> response) {
                 progressDialog.dismiss();
-                assert response.body() != null;
-                Log.d("signin",response.body().getMessage());
-                if(response.body().isStatus()){
-                    prefrence.getInstance(ctx).userLogin(response.body().getData());
-                    Log.d("signin",response.body().getData().getToken());
-                    startActivity(new Intent(ctx,homescreen.class));
-                    finish();
-                    Toast.makeText(ctx, "success"+response.body().getMessage(),Toast.LENGTH_LONG).show();
+                if(response.body()==null){
+                    try {
+                        Toast.makeText(ctx,response.errorBody().string(),Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else{
-                    Toast.makeText(ctx,"error"+response.body().getMessage(),Toast.LENGTH_LONG).show();
+                    if(response.body().isStatus()) {
+                        prefrence.getInstance(ctx).userLogin(response.body().getData());
+                        Log.d("signin", response.body().getData().getToken());
+                        startActivity(new Intent(ctx, homescreen.class));
+                        finish();
+                        Toast.makeText(ctx, "success:" + response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                    else
+                        Toast.makeText(ctx,"error"+ response.body().getError().getUserName(),Toast.LENGTH_LONG).show();
                 }
 
             }
 
             @Override
-            public void onFailure(Call<user_signup> call, Throwable t) {
+            public void onFailure(Call<user_signin> call, Throwable t) {
                 progressDialog.dismiss();
                 Toast.makeText(ctx,t.getMessage(),Toast.LENGTH_LONG).show();
+
             }
+
         });
     }
 
@@ -116,12 +115,13 @@ public class login extends AppCompatActivity {
         boolean isvalid = true;
         if (username.length() == 0){
             usernamelog.setError("Please Enter Username!");
-            return isvalid = false;
+            isvalid = false;
         }
         else if(password.length()<8) {
             passwordlog.setError("Password Should Be Minimum 8 char Long!");
-            return isvalid = false;
+            isvalid = false;
         }
+
         return isvalid;
     }
 
