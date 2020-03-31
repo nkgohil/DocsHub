@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context=".homescreen">
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:menu="@menu/navbar"
+        android:layout_gravity="start"
+        android:theme="@style/nav_fonts"
+        app:headerLayout="@layout/nav_header"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="fill"
     android:orientation="vertical">
-    <Toolbar
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary">
@@ -19,23 +35,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:src="@mipmap/navbutton" ></ImageView>
-
+            android:orientation="horizontal"
+            android:weightSum="20">
             <TextView
                 android:id="@+id/Doc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="8"
                 android:fontFamily="@font/poppinsmedium"
                 android:text="Doctor"
-                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:textAlignment="viewEnd"
                 android:textColor="#ffffffff"
                 android:textSize="20sp"
@@ -45,27 +54,21 @@
                 android:id="@+id/Hub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_gravity="center_vertical"
                 android:fontFamily="@font/poppinslight"
                 android:text="hub"
-                android:layout_weight="3"
+                android:layout_weight="10"
                 android:textColor="#ffffffff"
                 android:textSize="20sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:layout_marginHorizontal="15dp"
-                android:src="@mipmap/notification" />
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/notification" />
         </LinearLayout>
-    </Toolbar>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
                     android:layout_weight="5"
-                    android:src="@mipmap/department"></ImageView>
+                    android:src="@mipmap/department" />
             </TableRow>
         </TableLayout>
         <FrameLayout
@@ -156,5 +159,5 @@
             />
         </FrameLayout>
     </LinearLayout>
-</LinearLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.drawerlayout.widget.DrawerLayout>

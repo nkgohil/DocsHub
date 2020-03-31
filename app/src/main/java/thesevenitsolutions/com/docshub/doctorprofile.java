@@ -1,10 +1,8 @@
 package thesevenitsolutions.com.docshub;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import ru.slybeaver.slycalendarview.SlyCalendarDialog;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -40,9 +38,6 @@ public class doctorprofile extends AppCompatActivity implements SlyCalendarDialo
         setContentView(R.layout.activity_doctorprofile);
         allocatememory();
         setevent();
-
-
-
     }
 
     private void setevent() {
@@ -102,8 +97,7 @@ public class doctorprofile extends AppCompatActivity implements SlyCalendarDialo
 
             } else {
                 Toast.makeText(
-                        this,
-                        getString(
+                        this, getString(
                                 R.string.period,
                                 new SimpleDateFormat(getString(R.string.dateFormat), Locale.getDefault()).format(firstDate.getTime()),
                                 new SimpleDateFormat(getString(R.string.timeFormat), Locale.getDefault()).format(secondDate.getTime())

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scroll"
+    android:background="@color/white"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:fillViewport="true"
@@ -51,7 +52,7 @@
             android:id="@+id/txtmobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="USER NAME"
+            android:text="USERNAME"
             android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="17sp"/>

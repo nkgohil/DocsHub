@@ -1,7 +1,7 @@
 package thesevenitsolutions.com.docshub.pojo;
 
 public class user {
-private String name,username,password,email,mobile,token;
+private String name,username,password,email,mobile,token,userName;
 
 
     public user(String name, String username, String email, String mobile, String password) {
@@ -18,6 +18,19 @@ private String name,username,password,email,mobile,token;
             this.email=email;
             this.mobile=mobile;
             this.token=token;
+    }
+
+    public user(String userName, String password) {
+        this.userName = userName;
+        this.password=password;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getName() {

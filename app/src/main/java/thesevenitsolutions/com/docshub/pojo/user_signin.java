@@ -19,14 +19,9 @@ public class user_signin {
         this.code = code;
         this.message = message;
         this.data = data;
+        this.error=error;
     }
 
-    public user_signin(boolean status, Integer code, String message, user2 error) {
-        this.status = status;
-        this.code = code;
-        this.message = message;
-        this.error = error;
-    }
 
     public user2 getError() {
         return error;

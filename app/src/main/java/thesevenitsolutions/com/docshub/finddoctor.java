@@ -25,6 +25,7 @@ public class finddoctor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ctx,doctorprofile.class));
+
             }
         });
     }

@@ -2,38 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="thesevenitsolutions.com.docshub">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/docshublogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/docshublogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".signup" android:theme="@style/AppTheme3">
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings">
         </activity>
-        <activity
-            android:name=".department"
-            android:theme="@style/AppTheme3">
-        </activity>
-        <activity
-            android:name=".homescreen"
-            android:theme="@style/AppTheme3">
-        </activity>
-        <activity
-            android:name=".finddoctor"
-            android:theme="@style/AppTheme3" />
-        <activity
-            android:name=".findhospital"
-            android:theme="@style/AppTheme3" />
-
         <activity
             android:name=".splashscreen"
             android:theme="@style/AppTheme1">
@@ -44,13 +26,34 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".signup"
+            android:theme="@style/AppTheme3"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name=".login"
-            android:theme="@style/AppTheme1">
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".department"
+            android:theme="@style/AppTheme3" />
+        <activity
+            android:name=".homescreen"
+            android:theme="@style/AppTheme3">
+
         </activity>
         <activity
+            android:name=".finddoctor"
+            android:theme="@style/AppTheme3" />
+        <activity
+            android:name=".findhospital"
+            android:theme="@style/AppTheme3" />
+        <activity
             android:name=".otp"
-            android:theme="@style/AppTheme1">
-        </activity>
+            android:theme="@style/AppTheme1" />
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

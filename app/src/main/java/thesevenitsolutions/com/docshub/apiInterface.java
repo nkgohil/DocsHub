@@ -1,7 +1,10 @@
 package thesevenitsolutions.com.docshub;
 import java.util.List;
 
+import retrofit2.Callback;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import thesevenitsolutions.com.docshub.pojo.user;
 import thesevenitsolutions.com.docshub.pojo.user_signin;
 import thesevenitsolutions.com.docshub.pojo.user_signup;
 
@@ -20,7 +23,7 @@ public interface apiInterface {
 
         @FormUrlEncoded
         @POST("login")
-        Call<user_signin> loginUser(@Field("userName") String userName,
+        Call<user_signup> loginUser(@Field("userName") String userName,
                                         @Field("password") String password);
 
         @FormUrlEncoded
@@ -28,5 +31,8 @@ public interface apiInterface {
         Call<user_signup> changepassword(@Field("old_password") String old_password,
                                         @Field("new_password") String new_password,
                                         @Field("confirm_password") String confirm_password);
-    }
+
+        @GET("logout")
+        Call<user_signup> logout();
+}
 

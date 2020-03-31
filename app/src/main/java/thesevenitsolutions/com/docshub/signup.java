@@ -106,7 +106,7 @@ public class signup extends AppCompatActivity {
             txtmobile.setError("Please Add Only 10 Digit");
             isValid = false;
         }
-        if(Email.length()==0)
+        else if(Email.length()==0)
         {
             txtemail.setError("email is required");
             isValid = false;
@@ -135,7 +135,7 @@ public class signup extends AppCompatActivity {
         String username =txtusername.getText().toString().trim();
 
         apiInterface service = apIclient.getClient().create(apiInterface.class);
-        user user = new user(name,username,email,mobile,password);
+        final user user = new user(name,username,email,mobile,password);
         Call<user_signup> call = service.createUser(
                 user.getName(),
                 user.getUsername(),
@@ -148,13 +148,17 @@ public class signup extends AppCompatActivity {
                 progressDialog.dismiss();
                 assert response.body() != null;
                 if(response.body().isStatus()){
-                    prefrence.getInstance(ctx).getUser(response.body ().getData());
-                    Intent homeintent=new Intent(ctx,homescreen.class);
-                    startActivity(homeintent);
-                    finish();
+                    prefrence.getInstance(ctx).userLogin(response.body().getData());
+                    Log.d("signin",response.body().getData().getToken());
+                    Log.d("signin", String.valueOf(prefrence.getInstance(ctx).isLoggedIn()));
+                    if(prefrence.getInstance(ctx).isLoggedIn()) {
+                        Intent homeintent = new Intent(ctx, homescreen.class);
+                        startActivity(homeintent);
+                        finish();
+                    }
                     Toast.makeText(signup.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.d("signup",response.body().getData().toString());
-                    Log.d("signup",response.body().getData().getToken());
+                  //   Log.d("signup",response.body().getData().toString());
+                 //  Log.d("signup",response.body().getData().getToken());
                  }
                 else{
                     Toast.makeText(ctx,response.body().getMessage(),Toast.LENGTH_LONG).show();
@@ -166,13 +170,13 @@ public class signup extends AppCompatActivity {
             @Override
             public void onFailure(Call<user_signup> call, Throwable t) {
                 progressDialog.dismiss();
-                Toast.makeText(ctx,"no response from server", Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx,t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });
     }
 
-            private void allocatememory() {
+    private void allocatememory() {
         txtname=findViewById(R.id.txtname);
         txtemail=findViewById(R.id.txtemail);
         txtmobile=findViewById(R.id.txtmobileno);
