@@ -38,6 +38,11 @@ public class prefrence {
         editor.apply();
         return true;
     }
+    public String getTOken(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+        return (sharedPreferences.getString(KEY_USER_TOKEN,null));
+    }
 
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);

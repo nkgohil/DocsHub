@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import thesevenitsolutions.com.docshub.pojo.user;
 import thesevenitsolutions.com.docshub.pojo.user_signup;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -48,9 +46,8 @@ public class signup extends AppCompatActivity {
 
     private void checkpermission() {
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            if(checkSelfPermission(Manifest.permission.INTERNET)!= PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED) {
-                String[] PermissionList = {Manifest.permission.INTERNET,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            if(checkSelfPermission(Manifest.permission.INTERNET)!= PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED) {
+                String[] PermissionList = {Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 requestPermissions(PermissionList,PERMISSION_REQUEST_CODE);
             }
 
@@ -150,7 +147,6 @@ public class signup extends AppCompatActivity {
                 if(response.body().isStatus()){
                     prefrence.getInstance(ctx).userLogin(response.body().getData());
                     Log.d("signin",response.body().getData().getToken());
-                    Log.d("signin", String.valueOf(prefrence.getInstance(ctx).isLoggedIn()));
                     if(prefrence.getInstance(ctx).isLoggedIn()) {
                         Intent homeintent = new Intent(ctx, homescreen.class);
                         startActivity(homeintent);
@@ -161,8 +157,8 @@ public class signup extends AppCompatActivity {
                  //  Log.d("signup",response.body().getData().getToken());
                  }
                 else{
-                    Toast.makeText(ctx,response.body().getMessage(),Toast.LENGTH_LONG).show();
-                    Log.d("signup",response.body().getError().toString());
+                    Toast.makeText(ctx,"Email or Username Has been Taken!",Toast.LENGTH_LONG).show();
+                    Log.d("signup",response.body().getError().getName());
                 }
 
             }

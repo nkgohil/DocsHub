@@ -1,13 +1,11 @@
 package thesevenitsolutions.com.docshub;
 
-import androidx.appcompat.app.AppCompatActivity;
+  import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import thesevenitsolutions.com.docshub.pojo.user;
-import thesevenitsolutions.com.docshub.pojo.user2;
-import thesevenitsolutions.com.docshub.pojo.user_signin;
 import thesevenitsolutions.com.docshub.pojo.user_signup;
 
 import android.app.ProgressDialog;
@@ -23,16 +21,13 @@ import android.widget.Toast;
 
 import com.astritveliu.boom.Boom;
 
-import java.io.IOException;
 
 
 public class login extends AppCompatActivity {
-    Button button;
+    Button button,btnforgotpassword;
     Context ctx=this;
     TextView txtsignup;
     EditText usernamelog,passwordlog;
-    TextView usernamechange;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,49 +37,31 @@ public class login extends AppCompatActivity {
         setevent();
     }
 
-    private void allocatememory() {
-        button=findViewById(R.id.login);
-        new Boom(button);
-        txtsignup=findViewById(R.id.txtsignup);
-        usernamelog=findViewById(R.id.txtusernamelog);
-        passwordlog=findViewById(R.id.passwordlog);
-        usernamechange=findViewById(R.id.txtuserchange);
-    }
-
-    private boolean validateinput() {
-        String password = passwordlog.toString().trim();
-        String username = usernamelog.toString().trim();
-        boolean isvalid = true;
-        if (username.length() == 0){
-            usernamelog.setError("Please Enter Username!");
-            isvalid = false;
-        }
-        else if(password.length()<8) {
-            passwordlog.setError("Password Should Be Minimum 8 char Long!");
-            isvalid = false;
-        }
-
-        return isvalid;
-    }
-
     private void setevent() {
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(validateinput()) {
-                    loginuser();
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(validateinput()) {
+                        loginuser();
+                    }
                 }
-            }
-        });
-        txtsignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signinintent=new Intent(ctx,signup.class);
-                startActivity(signinintent);
+            });
+            txtsignup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent signinintent=new Intent(ctx,signup.class);
+                    startActivity(signinintent);
 
-            }
-        });
-    }
+                }
+            });
+            btnforgotpassword.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(ctx,forgetpassword.class));
+
+                }
+            });
+        }
 
     private void loginuser() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -96,10 +73,9 @@ public class login extends AppCompatActivity {
 
         apiInterface service = apIclient.getClient().create(apiInterface.class);
 
-        final user user2= new user(userName,password);
+        user user2= new user(userName,password);
 
         Call<user_signup>call = service.loginUser(user2.getUserName(),user2.getPassword());
-
         call.enqueue(new Callback<user_signup>() {
             @Override
             public void onResponse(Call<user_signup> call, Response<user_signup> response) {
@@ -127,6 +103,31 @@ public class login extends AppCompatActivity {
             }
 
         });
+    }
+
+
+    private void allocatememory() {
+        button=findViewById(R.id.login);
+        new Boom(button);
+        txtsignup=findViewById(R.id.txtsignup);
+        usernamelog=findViewById(R.id.txtusernamelog);
+        passwordlog=findViewById(R.id.passwordlog);
+        btnforgotpassword=findViewById(R.id.btnforgotpass);
+    }
+    private boolean validateinput() {
+        String password = passwordlog.toString().trim();
+        String username = usernamelog.toString().trim();
+        boolean isvalid = true;
+        if (username.length() == 0){
+            usernamelog.setError("Please Enter Username!");
+            isvalid = false;
+        }
+        else if(password.length()<8) {
+            passwordlog.setError("Password Should Be Minimum 8 char Long!");
+            isvalid = false;
+        }
+
+        return isvalid;
     }
 
 

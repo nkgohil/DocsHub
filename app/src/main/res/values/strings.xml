@@ -29,8 +29,8 @@
     <string name="signature_title">Your signature</string>
 
     <!-- Messages Preferences -->
-    <string name="reply_title">Default reply action</string>
-    <string name="sync_title">Sync email periodically</string>
+    <string name="reply_title">Themes</string>
+    <string name="sync_title">Sync email</string>
 
     <!-- Sync Preferences -->
     <string name="attachment_title">Download incoming attachments</string>
@@ -38,8 +38,8 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string-array name="city">
-        <item>Bhavnagr</item>
         <item>Ahmedabad</item>
+        <item>Bhavnagar</item>
         <item>Surat</item>
         <item>Rajkot</item>
         <item>Baroda</item>
