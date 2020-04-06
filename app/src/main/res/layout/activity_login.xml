@@ -69,7 +69,7 @@
                             android:paddingTop="9dp"
                             android:background="@drawable/edittext"/>
                     <Button
-
+                        android:id="@+id/forgetpassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"

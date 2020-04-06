@@ -13,7 +13,7 @@ import com.astritveliu.boom.Boom;
 
 
 public class login extends AppCompatActivity {
-    Button button;
+    Button button,forgetpassword;
     Context ctx=this;
     String name;
     TextView txtsignup;
@@ -28,6 +28,13 @@ public class login extends AppCompatActivity {
     }
 
     private void setevent() {
+        forgetpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent passwordintent=new Intent(ctx,forgetpassword.class);
+                startActivity(passwordintent);
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,5 +58,6 @@ public class login extends AppCompatActivity {
         button=findViewById(R.id.login);
         new Boom(button);
         txtsignup=findViewById(R.id.txtsignup);
+        forgetpassword=findViewById(R.id.forgetpassword);
     }
 }

@@ -44,12 +44,14 @@ public class prefrence {
         return sharedPreferences.getString(KEY_USER_TOKEN, null) != null;
     }
 
-    public user getUser() {
+    public user getUser(user data) {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return new user(
                 sharedPreferences.getString(KEY_USER_NAME, null),
                 sharedPreferences.getString(KEY_USER_EMAIL, null),
-                sharedPreferences.getString(KEY_USER_MOBILE, null)
+                sharedPreferences.getString(KEY_USER_MOBILE, null),
+                sharedPreferences.getString(KEY_USER_TOKEN, null)
+
         );
 
     }

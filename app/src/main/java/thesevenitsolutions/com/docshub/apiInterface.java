@@ -9,12 +9,13 @@ import retrofit2.http.Field;
 import retrofit2.http.POST;
 
 public interface apiInterface {
+
         @FormUrlEncoded
-        @POST("public/api/register")
-        Call<user_signup> createUser(@Field("name")String name,
-                                     @Field("username")String username,
-                                     @Field("password")String password,
-                                     @Field("mobile")String mobile,
-                                     @Field("email")String email);
+        @POST("register")
+        Call<user_signup> createUser(@Field("name") String name,
+                                     @Field("username") String username,
+                                     @Field("password") String password,
+                                     @Field("mobile") String mobile,
+                                     @Field("email") String email);
     }
 

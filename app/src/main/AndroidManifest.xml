@@ -2,12 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="thesevenitsolutions.com.docshub">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,24 +10,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".signup" android:theme="@style/AppTheme3">
+        <activity android:name=".myappointment">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".settings"
+            android:theme="@style/AppTheme4">
+
+        </activity>
+        <activity
+            android:name=".editprofile"
+            android:theme="@style/AppTheme2">
+
+        </activity>
+        <activity
+            android:name=".signup"
+            android:theme="@style/AppTheme3" />
         <activity
             android:name=".department"
-            android:theme="@style/AppTheme3">
-        </activity>
+            android:theme="@style/AppTheme3" />
         <activity
             android:name=".homescreen"
-            android:theme="@style/AppTheme3">
-        </activity>
+            android:theme="@style/AppTheme3" />
         <activity
             android:name=".finddoctor"
             android:theme="@style/AppTheme3" />
         <activity
             android:name=".findhospital"
             android:theme="@style/AppTheme3" />
-
         <activity
             android:name=".splashscreen"
             android:theme="@style/AppTheme1">
@@ -45,12 +55,25 @@
         </activity>
         <activity
             android:name=".login"
-            android:theme="@style/AppTheme1">
-        </activity>
+            android:theme="@style/AppTheme1" />
         <activity
             android:name=".otp"
-            android:theme="@style/AppTheme1">
-        </activity>
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".forgetpassword"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".newpassword"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".verifyotp"
+            android:theme="@style/AppTheme2" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
