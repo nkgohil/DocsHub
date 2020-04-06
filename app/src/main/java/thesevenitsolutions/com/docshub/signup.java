@@ -55,7 +55,7 @@ public class signup extends AppCompatActivity {
             }
 
         }
-    }
+        }
 
 
 
@@ -155,7 +155,7 @@ public class signup extends AppCompatActivity {
                     Toast.makeText(signup.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Log.d("signup",response.body().getData().toString());
                     Log.d("signup",response.body().getData().getToken());
-                }
+                 }
                 else{
                     Toast.makeText(ctx,response.body().getMessage(),Toast.LENGTH_LONG).show();
                     Log.d("signup",response.body().getError().toString());
@@ -172,7 +172,7 @@ public class signup extends AppCompatActivity {
         });
     }
 
-    private void allocatememory() {
+            private void allocatememory() {
         txtname=findViewById(R.id.txtname);
         txtemail=findViewById(R.id.txtemail);
         txtmobile=findViewById(R.id.txtmobileno);
@@ -181,6 +181,6 @@ public class signup extends AppCompatActivity {
         new Boom(btnsignup);
         txtusername=findViewById(R.id.txtusername);
         txtsignin=findViewById(R.id.txtsignin);
-
+        userchange=findViewById(R.id.txtuserchange);
     }
 }

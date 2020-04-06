@@ -3,8 +3,8 @@
     android:id="@+id/scroll"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fillViewport="true"
     android:layout_height="match_parent"
-    android:background="#ffffff"
     tools:context=".login">
     <LinearLayout
         android:padding="20dp"
@@ -23,14 +23,14 @@
 
 
         <TextView
-            android:fontFamily="@font/poppinsmedium"
-            android:layout_marginVertical="7dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginVertical="7dp"
+            android:fontFamily="@font/poppinsmedium"
             android:text="NAME"
-            android:textStyle="bold"
             android:textColor="#000000"
-            android:textSize="20sp"/>
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/txtname"
@@ -55,7 +55,7 @@
             android:text="USER NAME"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:textSize="20sp"/>
+            android:textSize="17sp"/>
 
         <EditText
             android:id="@+id/txtusername"
@@ -80,7 +80,7 @@
             android:fontFamily="@font/poppinsmedium"
             android:text="PHONE NUMBER"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
         <EditText
@@ -107,7 +107,7 @@
             android:text="EMAIL"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:textSize="20sp"/>
+            android:textSize="17sp"/>
         <EditText
             android:id="@+id/txtemail"
             android:fontFamily="@font/poppinsmedium"
@@ -131,7 +131,7 @@
             android:text="PASSWORD"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:textSize="20sp"/>
+            android:textSize="17sp"/>
         <EditText
             android:id="@+id/txtpassword"
             android:fontFamily="@font/poppinsmedium"
@@ -157,7 +157,7 @@
             android:text="Sign Up"
             android:layout_marginVertical="7dp"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -171,16 +171,16 @@
                 android:textColor="#000000"
                 android:alpha=".5"
                 android:layout_marginTop="2dp"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/txtsignin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="SignIn"
+                android:text="SIGN IN"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 

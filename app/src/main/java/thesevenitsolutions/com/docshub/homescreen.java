@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -22,6 +23,7 @@ public class homescreen extends AppCompatActivity {
     Context ctx=this;
     ImageView imghos,imgdoc,imgdepartment,imgappoint;
     DrawerLayout d1;
+    TextView userchange;
     ActionBarDrawerToggle abdt;
 
 
@@ -29,6 +31,7 @@ public class homescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homescreen);
         allocatememory();
+
         setevent();
 
 
@@ -87,6 +90,7 @@ public class homescreen extends AppCompatActivity {
         imgdoc= findViewById(R.id.imgfinddoc);
         imgdepartment= findViewById(R.id.imgdepartment);
         imgappoint= findViewById(R.id.imgappoint);
+        userchange=findViewById(R.id.txtuserchange);
     }
 
 }
