@@ -38,7 +38,7 @@
         android:layout_height="150dp"
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_marginTop="60dp"
-        android:src="@drawable/doctor"/>
+        android:src="@mipmap/doc"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

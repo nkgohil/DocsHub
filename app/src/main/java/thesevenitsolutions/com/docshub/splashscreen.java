@@ -22,16 +22,17 @@ public class splashscreen extends AppCompatActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 if (prefrence.getInstance(ctx).isLoggedIn()) {
-                    final Intent i = new Intent(ctx, homescreen.class);
-                    startActivity(i);
-                    finish();
-                }
-                else
-                {
-                    startActivity(new Intent(ctx,signup.class));
-                    finish();
-                }
-            }
-        }, 1000);
+        final Intent i = new Intent(ctx, homescreen.class);
+        startActivity(i);
+        finish();
     }
+                else
+    {
+        startActivity(new Intent(ctx,signup.class));
+        finish();
+    }
+}
+        }, 1000);
+                }
+
 }

@@ -1,7 +1,12 @@
 package thesevenitsolutions.com.docshub;
 
 import androidx.appcompat.app.AppCompatActivity;
+import thesevenitsolutions.com.docshub.pojo.forgotpassword;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,17 +33,42 @@ public class forgetpassword extends AppCompatActivity {
         sendotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            if (validateinput()){
 
-                if(email.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"Enter email address",Toast.LENGTH_SHORT).show();
-                }else {
-                    if (email.getText().toString().trim().matches(emailPattern)) {
-                        Intent verify=new Intent(ctx,verifyotp.class);
-                        startActivity(verify);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT).show();
-                    }
+                forgotpassword();
+            }
+
+            }
+        });
+
+    }
+
+    private void forgotpassword() {
+       String emailpass=email.getText().toString().trim();
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("ONE MOMENT PLEASE");
+        progressDialog.show();
+       apiInterface service=apIclient.getClient().create(apiInterface.class);
+
+        forgotpassword forgot= new forgotpassword(emailpass);
+
+        Call<forgotpassword>call = service.sendotp(prefrence.getInstance(ctx).getTOken(),forgot.getUserid());
+
+        call.enqueue(new Callback<forgotpassword>() {
+            @Override
+            public void onResponse(Call<forgotpassword> call, Response<forgotpassword> response) {
+                progressDialog.dismiss();
+                if(response.body()==null){
+
+                    Toast.makeText(ctx,"There is something wrong!",Toast.LENGTH_LONG).show();
                 }
+                else {
+                }
+            }
+
+            @Override
+            public void onFailure(Call<forgotpassword> call, Throwable t) {
+                progressDialog.dismiss();
             }
         });
 
@@ -48,6 +78,18 @@ public class forgetpassword extends AppCompatActivity {
         sendotp=findViewById(R.id.btnsendotp);
         email=findViewById(R.id.email);
     }
-
-
+    public boolean validateinput()
+    {
+        boolean isvalid=true;
+        if(email.getText().toString().isEmpty()) {
+            email.setError("Email can't be empty!");
+            isvalid=false;
+        }
+        else if(!email.getText().toString().matches(emailPattern)){
+            email.setError("Please Enter valid email address!" +
+                    "/n"+"Like abc@xyz.ab");
+            isvalid=false;
+        }
+        return isvalid;
+    }
 }

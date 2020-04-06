@@ -29,7 +29,7 @@ public class prefrence {
         return preferences;
     }
 
-    public boolean userLogin(user2 user) {
+    public boolean userLogin(user user) {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_USER_USERNAME, user.getUsername());
@@ -37,6 +37,11 @@ public class prefrence {
         editor.putString(KEY_USER_TOKEN,user.getToken());
         editor.apply();
         return true;
+    }
+    public String getTOken(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+        return (sharedPreferences.getString(KEY_USER_TOKEN,null));
     }
 
     public boolean isLoggedIn() {

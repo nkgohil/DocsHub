@@ -19,7 +19,7 @@
 
             <item>
 
-                <bitmap android:gravity="center|right"
+                <bitmap android:gravity="center|right|center_vertical"
                     android:src="@mipmap/droparrow"/>
             </item>
 

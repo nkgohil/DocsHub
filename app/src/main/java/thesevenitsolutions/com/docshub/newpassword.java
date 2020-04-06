@@ -25,10 +25,10 @@ public class newpassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newpassword);
-     //   allocatememory();
-       // setevent();
+       allocatememory();
+       setevent();
     }
-/*
+
     private void allocatememory() {
 
         newpassword=findViewById(R.id.newpassword);
@@ -91,7 +91,7 @@ public class newpassword extends AppCompatActivity {
         boolean temp=true;
         String pass=newpassword.getText().toString().trim();
         String cpass=confirm_password.getText().toString().trim();
-         if(!pass.equals(cpass)){
+         if(!pass.matches(cpass)){
             newpassword.setError("Password Does Not Match");
         temp=false;
         }
@@ -99,6 +99,4 @@ public class newpassword extends AppCompatActivity {
              oldpassword.setError("Password Should be 8 Character Long");
         return temp;
     }
-
- */
 }

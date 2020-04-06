@@ -11,7 +11,7 @@
         android:title="Home" />
     <item
         android:id="@+id/tabappointment"
-        android:icon="@mipmap/appointment"
+        android:icon="@mipmap/menuappoint"
         android:title="Appoint" />
 
 </menu>
