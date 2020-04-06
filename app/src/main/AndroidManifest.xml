@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
     <application
         android:icon="@mipmap/docshublogo"
         android:label="@string/app_name"
@@ -17,6 +19,16 @@
         <activity
             android:name=".splashscreen"
             android:theme="@style/AppTheme1">
+        <activity android:name=".myappointment">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".settings"
+            android:theme="@style/AppTheme4">
 
         </activity>
         <activity android:name=".doctorprofile" android:theme="@style/AppTheme3"></activity>
@@ -28,6 +40,22 @@
             android:name=".login"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="stateHidden" />
+            android:name=".editprofile"
+            android:theme="@style/AppTheme2">
+
+        </activity>
+        <activity
+            android:name=".signup"
+            android:theme="@style/AppTheme3" />
+        <activity
+            android:name=".department"
+            android:theme="@style/AppTheme3" />
+        <activity
+            android:name=".homescreen"
+            android:theme="@style/AppTheme3" />
+        <activity
+            android:name=".finddoctor"
+            android:theme="@style/AppTheme3" />
         <activity
             android:name=".department"
             android:theme="@style/AppTheme3" />
@@ -49,7 +77,28 @@
         <activity
             android:name=".otp"
             android:theme="@style/AppTheme1" />
+
+            android:name=".login"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".otp"
+            android:theme="@style/AppTheme1" />
+        <activity
+            android:name=".forgetpassword"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".newpassword"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".verifyotp"
+            android:theme="@style/AppTheme2" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 
 
